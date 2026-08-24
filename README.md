@@ -1,1 +1,1 @@
-# CINEMORA - movie ticket booking application
+# CINEMORA - movie ticket booking application 
