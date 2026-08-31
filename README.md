@@ -1,63 +1,81 @@
-# 🎬 Cinemora — MERN Movie Ticket Booking App
+# 🎬 Cinemora — Movie Ticket Booking App
 
-Cinemora is a full-stack **MERN Movie Ticket Booking Application** built using React, Node.js, Express.js, and MongoDB.
-
-The application allows users to browse movies, select shows, choose seats, and book movie tickets. It also includes an admin panel for managing movies, theaters, screens, shows, and bookings.
-
-A major feature of Cinemora is its **15-minute seat-locking mechanism**, which prevents double booking during concurrent seat-selection requests.
-
----
+Cinemora is a **MERN-stack movie ticket booking application** built with React, Node.js, Express.js, and MongoDB. It allows users to browse movies, select shows and seats, and book tickets securely.
 
 ## 🚀 Features
 
-### 👤 User Features
-
-- User registration and login
-- JWT-based authentication
+- User registration and JWT login
 - Browse and search movies
-- View available shows and showtimes
+- View shows and showtimes
 - Interactive seat selection
-- 15-minute seat-lock countdown
+- **15-minute seat locking**
+- Prevents double booking using MongoDB atomic operations
+- Real-time seat updates using Socket.io
 - Pay-at-counter booking
-- Unique booking code generation
-- PDF receipt generation
-- My Bookings / booking history
-- Re-download booking receipts
-- Real-time seat availability updates
+- Booking code and PDF receipt generation
+- My Bookings and booking history
+- Admin dashboard
+- Movie, theater, screen, show and booking management
+- Automatic release of expired seat locks
 
-### 🛠️ Admin Features
+## 🧰 Tech Stack
 
-- Admin login
-- Role-based authorization
-- Dashboard statistics
-- Movie CRUD operations
-- Theater management
-- Screen management
-- Show scheduling
-- Automatic seat-grid generation
-- View all bookings
-- Mark bookings as paid at counter
+**Frontend:** React.js, Vite, JavaScript, CSS/Tailwind CSS, Axios, Socket.io
 
----
+**Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT, Socket.io, PDFKit
 
-## 🔒 Concurrency & Seat Locking
+## 📁 Project Structure
 
-Cinemora implements a **15-minute temporary seat-locking mechanism**.
+movie-ticket-app/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── jobs/
+│   └── server.js
+│
+└── frontend/
+    ├── src/
+    ├── components/
+    ├── pages/
+    └── App.jsx
 
-When a user selects seats and clicks **Proceed to Pay**:
+## 🎟️ Booking Flow
+Login
+  ↓
+Select Movie
+  ↓
+Select Show
+  ↓
+Select Seats
+  ↓
+Proceed to Pay
+  ↓
+Seats Locked for 15 Minutes
+  ↓
+Booking Confirmed
+  ↓
+Booking Code / PDF Receipt
 
-1. The backend checks seat availability.
-2. Available seats are atomically locked.
-3. A 15-minute expiration time is generated.
-4. The frontend displays a countdown timer.
-5. If the booking is completed, seats become permanently booked.
-6. If the timer expires, the seats are released automatically.
+## 🔒 Concurrency & Double Booking
 
-### Seat Lifecycle
+Cinemora uses MongoDB's atomic findOneAndUpdate() to lock seats only when their status is available.
 
-```text
-Available
-    ↓
-Locked
-    ↓
-Booked
+Available → Locked → Booked
+
+If two users try to book the same seat, only one request gets the lock. The other receives 409 Conflict. This prevents double booking.
+
+Expired locks are automatically released by a server-side cleanup job.
+
+## 🔮 Future Enhancements
+Razorpay/Stripe online payment
+QR-code tickets
+Email/SMS notifications
+Movie reviews and ratings
+Seat categories and dynamic pricing
+Movie recommendation system
+
+## 📜 License
+
+This project is developed for academic and educational purposes.
