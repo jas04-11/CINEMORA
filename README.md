@@ -25,38 +25,10 @@ Cinemora is a **MERN-stack movie ticket booking application** built with React, 
 **Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT, Socket.io, PDFKit
 
 ## 📁 Project Structure
-
-movie-ticket-app/
-├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── jobs/
-│   └── server.js
-│
-└── frontend/
-    ├── src/
-    ├── components/
-    ├── pages/
-    └── App.jsx
+<img width="242" height="381" alt="image" src="https://github.com/user-attachments/assets/21e043a7-36c2-49d6-9c7d-373235db910c" />
 
 ## 🎟️ Booking Flow
-Login
-  ↓
-Select Movie
-  ↓
-Select Show
-  ↓
-Select Seats
-  ↓
-Proceed to Pay
-  ↓
-Seats Locked for 15 Minutes
-  ↓
-Booking Confirmed
-  ↓
-Booking Code / PDF Receipt
+<img width="326" height="402" alt="image" src="https://github.com/user-attachments/assets/04fb1fb2-e713-464f-a763-caee3a6e528a" />
 
 ## 🔒 Concurrency & Double Booking
 
