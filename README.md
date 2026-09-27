@@ -49,5 +49,4 @@ Seat categories and dynamic pricing
 Movie recommendation system
 
 ## 📜 License
-
 This project is developed for academic and educational purposes.
