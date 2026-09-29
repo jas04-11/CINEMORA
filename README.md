@@ -1,5 +1,6 @@
 # 🎬 Cinemora — Movie Ticket Booking App
 
+
 Cinemora is a **MERN-stack movie ticket booking application** built with React, Node.js, Express.js, and MongoDB. It allows users to browse movies, select shows and seats, and book tickets securely.
 
 ## 🚀 Features
